@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect,useState } from "react";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import MovieList from "../../components/MovieList/MovieList";
 import axios from "axios";
 
 const MoviePage = () => {
@@ -8,7 +10,7 @@ const MoviePage = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
+  
   useEffect(() => {
       if (!query) return;
     async function fetchMovies() {
@@ -29,31 +31,13 @@ const MoviePage = () => {
     }
        fetchMovies();}, [query, setLoading]);
 
-       const handleSubmit = (e) => {
-        e.preventDefault();
-        if (searchTerm.trim()) {
-          setQuery(searchTerm.trim());
-        }
-      };
+      
+      
     return(
         <div>
-            <form onSubmit={handleSubmit}>
-            <input  type="text"
-               autoComplete="off"
-               autoFocus
-               placeholder="Search some movies!"
-               value={searchTerm}
-               onChange={(e) => setSearchTerm(e.target.value)}/>
+            <SearchBar   setQuery={setQuery}/>
+            <MovieList movies={movies}/>
             
-             <button type="submit">Search</button>
-            </form>
-            <div>
-       <ul>
-        {movies.map((movie) => (
-            <li key={movie.id}>{movie.title}</li>
-        ))}
-       </ul>
-    </div>
         </div>
     )
 }
