@@ -1,20 +1,23 @@
-import React from "react";
-import HomePage from "../../pages/HomePage/HomePage";
-import MovieDetailsPage from "../../pages/MovieDetailsPage/MovieDetailsPage";
-{/*import NotFoundPage from "../../pages/NotFoundPage"*/}
-import MoviesPage from "../../pages/MoviesPage/MoviesPage"
+import React, { Suspense, lazy } from "react";
+const HomePage =lazy(() => import( "../../pages/HomePage/HomePage"));
+const MovieDetailsPage =lazy(() => import( "../../pages/MovieDetailsPage/MovieDetailsPage"));
+const NotFoundPage =lazy(() =>  import ("../../pages/NotFoundPage/NotFoundPage"));
+const MoviesPage =lazy(() => import( "../../pages/MoviesPage/MoviesPage"));
 import Header from "../Header/Header";
-import MovieCast from "../MovieCast/MovieCast";
-import MovieReviews from "../MovieReviews/MovieReviews";
+const MovieCast  =lazy(() =>import( "../MovieCast/MovieCast"));
+const MovieReviews  =lazy(() => import( "../MovieReviews/MovieReviews"));
 import {  Routes, Route } from "react-router-dom";
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Loader from "../Loader/Loader";
 const App = () => {
 
   return (
     <div>
-   
+      
+      <ToastContainer />
       <Header />
+<Suspense fallback={<Loader/>}>
       <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/movies" element={<MoviesPage />} />
@@ -24,9 +27,9 @@ const App = () => {
     <Route path="reviews" element={<MovieReviews />} /> 
   </Route>
 
-         {/*<Route path="*" element={<NotFoundPage/>}*/}
+         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
-    
+</Suspense>
     </div>
   )
 }

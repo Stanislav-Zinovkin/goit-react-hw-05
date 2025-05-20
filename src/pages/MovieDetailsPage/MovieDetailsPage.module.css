@@ -1,0 +1,52 @@
+.container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  .movieDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .moviePoster {
+    width: 300px;
+    height: 450px;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .linkContainer {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .linkContainer a {
+    font-size: 1.2rem;
+    color: #555;
+    text-decoration: none;
+    padding: 8px 15px;
+    border: 2px solid #555;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .linkContainer a:hover {
+    background-color: #555;
+    color: #fff;
+    border-color: #555;
+  }

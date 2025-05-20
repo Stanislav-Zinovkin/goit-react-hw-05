@@ -1,0 +1,26 @@
+.ratingContainer {
+    position: relative;
+    width: 25%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .rating{
+    height: 100%;
+    background-color: #4caf50; 
+    border-radius: 5px;
+  }
+  .ratingText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    color: #333;
+  }
+  .noRating {
+    font-size: 16px;
+    color: #f44336;
+    font-weight: bold;
+}

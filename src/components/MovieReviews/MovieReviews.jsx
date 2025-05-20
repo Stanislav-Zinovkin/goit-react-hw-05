@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import awaitFun from "../../awaitFun/awaitFun";
 import { useParams } from "react-router-dom";
+import styles from "./MovieReviews.module.css";
 const MovieReviews = () => {
 const [loading, setLoading] = useState(false);
 const [error,setError] = useState(null);
@@ -20,17 +21,18 @@ useEffect (()=>{
     }fetchReviews();},[id]);
 
     return(
-        <div>
-            {reviews.length ===0 ?(
-                <p>Dont have any reviews</p>
-            ): (
-                <ul>
-                    {reviews.map((review)=>(
-                        <li key={review.id}>
-                            <h2>{review.author}</h2>
-                            <p>{review.content}</p>
-
-                        </li>
+        <div className={styles.reviewsContainer}>
+        {error ? (
+          <p className={styles.error}>{error}</p>
+        ) : reviews.length === 0 ? (
+          <p className={styles.noReviews}>No reviews available</p>
+        ) : (
+          <ul className={styles.reviewsList}>
+            {reviews.map((review) => (
+              <li key={review.id} className={styles.reviewItem}>
+                <h3 className={styles.author}>{review.author}</h3>
+                <p className={styles.content}>{review.content}</p>
+              </li>
                     ))}
                 </ul>
             )}

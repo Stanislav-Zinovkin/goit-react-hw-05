@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import awaitFun from "../../awaitFun/awaitFun"
+import styles from "./HomePage.module.css"
     
 
 
@@ -29,12 +30,16 @@ const HomePage = () => {
         loadMmovies()
     },[])
     return (
-        <div>
-          <ul>
-            {movies.map((movie) => (
-              <li key={movie.id}>
-                <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-              </li> 
+      <div className={styles.homePage}>
+      {loading && <p className={styles.loading}>Loading movies...</p>}
+      {error && <p className={styles.error}>{error}</p>}
+      <ul className={styles.movieList}>
+        {movies.map((movie) => (
+          <li className={styles.movieItem} key={movie.id}>
+            <Link to={`/movies/${movie.id}`} className={styles.movieLink}>
+              {movie.title}
+            </Link>
+          </li>
             ))}
           </ul>
         </div>
